@@ -1,6 +1,6 @@
 import "../../index.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   FormControl,
   IconButton,
@@ -11,8 +11,9 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { AccountCircle } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 function SignUp() {
-  const Navigate = useNavigate();
+  // const Navigate = useNavigate();
 
   //   password
   const [showPassword, setShowPassword] = useState(false);
@@ -22,11 +23,19 @@ function SignUp() {
   };
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
+  const [email, setEmail] = useState();
   // user Name
   const [userName, setUserName] = useState();
 
-  const sendUserNameAndPassword = () => {
-    Navigate("/chatPage");
+  const sendUserNameAndPassword = async () => {
+    const res = await axios.post("http://87.248.150.136:3020/user/register", {
+      firstName: "hossein",
+      email,
+      userName,
+      password,
+    });
+    console.log(res.data);
+    // Navigate("/chatPage");
     console.log(userName);
     console.log(password);
     console.log(password2);
@@ -38,6 +47,19 @@ function SignUp() {
         {/* user Name */}
         <TextField
           onChange={(event) => setUserName(event.target.value)}
+          id="input-with-icon-textField_UserName"
+          label="نام کاربری خود را وارد کنید"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+          variant="standard"
+        />
+        <TextField
+          onChange={(event) => setEmail(event.target.value)}
           id="input-with-icon-textField_UserName"
           label="ایمیل خپود را وارد کنید"
           InputProps={{

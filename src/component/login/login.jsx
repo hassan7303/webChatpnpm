@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   FormControl,
   IconButton,
@@ -10,9 +10,10 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { AccountCircle } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 
 function Login() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //   password
   const [showPassword, setShowPassword] = useState(false);
@@ -24,8 +25,13 @@ function Login() {
 
   // user Name
   const [userName, setUserName] = useState();
-  const sendUserNameAndPassword = () => {
-    navigate("/chatPage");
+  const sendUserNameAndPassword = async () => {
+    // navigate("/chatPage");
+    const res = await axios.post("http://87.248.150.136:3020/user/register", {
+      userName,
+      password,
+    });
+    console.log(res);
     console.log(userName);
     console.log(password);
   };
@@ -72,7 +78,7 @@ function Login() {
         <div className="btns">
           <button
             className="btn btn-primary"
-            onClick={() => navigate("/signup")}
+            // onClick={() => navigate("/signup")}
           >
             ثبت نام
           </button>

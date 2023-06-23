@@ -46,13 +46,11 @@ function Main() {
     <div className="bg_main">
       <div className="main_body" dir="rtl">
         <div className="container_main">
-          {allMessage.map((messageObj) => (
+          {/* {allMessage.map((messageObj) => (
             <div className="container_message_send">
-              <div className="message_send" key={messageObj.id}>
-                {messageObj.message}
-              </div>
+              <div className="message_send">{messageObj.message}</div>
             </div>
-          ))}
+          ))} */}
 
           <div className="container_message_receive">
             <div className="message_receive">
@@ -67,7 +65,7 @@ function Main() {
               p: "2px 4px",
               display: "flex",
               alignItems: "center",
-              width: 400,
+              // width: 400,
               borderRadius: "36px",
               width: "42vw",
             }}
